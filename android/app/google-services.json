@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "20650421153",
+    "project_id": "the-paint",
+    "storage_bucket": "the-paint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20650421153:android:be10c7ded98816f174b9e0",
+        "android_client_info": {
+          "package_name": "com.example.the_paint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20650421153-7b0705aetjouhhsmfmjvhrpclcomfnck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnu372_dpUhzPM2mIs6TVsl2pEic2btr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20650421153-7b0705aetjouhhsmfmjvhrpclcomfnck.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "20650421153-gdr7jdirj1copnblp3h8q6gqlv5fcaao.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.thePaint"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

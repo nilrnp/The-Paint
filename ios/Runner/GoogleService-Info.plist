@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>20650421153-gdr7jdirj1copnblp3h8q6gqlv5fcaao.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.20650421153-gdr7jdirj1copnblp3h8q6gqlv5fcaao</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAgz6XchYObEJE7OYOq7XO6CMifaTWdDFo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>20650421153</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.thePaint</string>
+	<key>PROJECT_ID</key>
+	<string>the-paint</string>
+	<key>STORAGE_BUCKET</key>
+	<string>the-paint.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:20650421153:ios:df2848cfb55c3fef74b9e0</string>
+</dict>
+</plist>
