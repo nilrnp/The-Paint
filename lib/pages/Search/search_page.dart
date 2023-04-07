@@ -2,10 +2,9 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:the_paint/pages/profile_page.dart';
-import 'package:the_paint/pages/team_page.dart';
+import 'package:the_paint/pages/Profile/profile_page.dart';
 
-import 'login_page.dart';
+import '../Registering/login_page.dart';
 
 class SearchPage extends StatefulWidget {
   @override

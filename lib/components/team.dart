@@ -1,9 +1,11 @@
 class Team {
-  final String abbreviation; // LAL
-  final String full_name; // Los Angeles
+  final String key;
+  final String name;
+  final String city;
 
   Team({
-    required this.abbreviation,
-    required this.full_name,
+    required this.key,
+    required this.name,
+    required this.city,
   });
 }

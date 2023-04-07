@@ -1,26 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:the_paint/components/my_button.dart';
-import 'package:the_paint/components/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:the_paint/pages/login_page.dart';
+import 'package:flutter/material.dart';
+import 'package:the_paint/pages/Registering/login_page.dart';
+import '../../components/my_button.dart';
+import '../../components/my_text_field.dart';
 
-class RegisterPage extends StatefulWidget {
-  final Function()? onTap;
-
-  const RegisterPage({super.key, this.onTap});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  // text editing controllers
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
 
-  // sign user up method
-  void signUserUp() async {
+  // send password reset link method
+  Future sendPasswordResetLink() async {
     // loading circle
     showDialog(
       context: context,
@@ -31,20 +26,10 @@ class _RegisterPageState extends State<RegisterPage> {
       },
     );
 
-    // try creating the user
+    // try sending reset password link
     try {
-      // check if password and confirm password are the same
-      if (passwordController.text != confirmPasswordController.text) {
-        Navigator.pop(context);
-        wrongSignUpMessage("Passwords do not match");
-        return;
-      } else {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
-      }
-
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
       // stop loading circle
       Navigator.pop(context);
       // show confirmed message
@@ -55,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
             backgroundColor: Colors.blueAccent,
             title: Center(
               child: Text(
-                'Account has been created',
+                'Password reset link sent to email',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -122,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 //welcome back text
                 const Text(
-                  'Create an account',
+                  'Enter email to get password reset link',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -140,28 +125,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 10),
 
-                //password
-                MyTextField(
-                  controller: passwordController,
-                  hintText: 'Password',
-                  obscureText: true,
-                ),
-
                 const SizedBox(height: 10),
-
-                //confirm password
-                MyTextField(
-                  controller: confirmPasswordController,
-                  hintText: 'Confirm Password',
-                  obscureText: true,
-                ),
 
                 const SizedBox(height: 25),
 
                 //sign in button
                 MyButton(
-                  onTap: signUserUp,
-                  text: 'Sign Up',
+                  onTap: sendPasswordResetLink,
+                  text: 'Reset Password',
                 ),
 
                 const SizedBox(height: 10),
@@ -199,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:the_paint/components/my_button.dart';
 import 'package:the_paint/components/my_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:the_paint/pages/forgot_password_page.dart';
-import 'package:the_paint/pages/team_page.dart';
-import 'package:the_paint/pages/register_page.dart';
+import 'package:the_paint/pages/Registering/forgot_password_page.dart';
+import 'package:the_paint/pages/Registering/register_page.dart';
 
-import 'navigation.dart';
+import '../navigation.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
