@@ -73,8 +73,9 @@ class _RegisterPageState extends State<RegisterPage> {
     } on FirebaseAuthException catch (e) {
       // stop loading circle
       Navigator.pop(context);
-      // show error message
-      wrongSignUpMessage(e.code);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message!),
+      ));
     }
   }
 

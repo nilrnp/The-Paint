@@ -44,13 +44,13 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Navigation();
+        return const Navigation();
       }));
     } on FirebaseAuthException catch (e) {
-      // stop loading circle
       Navigator.pop(context);
-      // show error message
-      wrongLoginMessage(e.code);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message!),
+      ));
     }
   }
 

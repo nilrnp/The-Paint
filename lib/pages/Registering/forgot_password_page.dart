@@ -50,16 +50,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         },
       );
       // wait 2 seconds
-      await Future.delayed(Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 5));
       // go back to login page
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return LoginPage();
+        return const LoginPage();
       }));
     } on FirebaseAuthException catch (e) {
-      // stop loading circle
       Navigator.pop(context);
-      // show error message
-      wrongSignUpMessage(e.code);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message!),
+      ));
     }
   }
 
@@ -175,7 +175,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return LoginPage();
+                          return const LoginPage();
                         }));
                       },
                       child: const Text(

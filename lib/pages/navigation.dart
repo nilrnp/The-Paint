@@ -1,58 +1,49 @@
-import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:the_paint/pages/Profile/profile_page.dart';
 import 'package:the_paint/pages/Search/search_page.dart';
 import 'Registering/login_page.dart';
 import 'Teams/teams_page.dart';
 
 class Navigation extends StatefulWidget {
+  const Navigation({super.key});
+
   @override
   _NavigationState createState() => _NavigationState();
 }
 
 class _NavigationState extends State<Navigation> {
-  int currentIndex = 1;
+  int _selectedIndex = 0;
+
+  List<Widget> widgetOptions = <Widget>[
+    TeamsPage(),
+    SearchPage(),
+    ProfilePage()
+  ];
+
+  void onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final screens = [
     TeamsPage(),
     SearchPage(),
     ProfilePage(),
   ];
 
-  //sign user out method
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return const LoginPage();
-    }));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('The Paint'),
-        actions: [
-          IconButton(
-            onPressed: signUserOut,
-            icon: const Icon(Icons.logout),
-          )
-        ],
-        backgroundColor: Colors.black,
-      ),
-      body: screens[currentIndex],
+      body: widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() {
-          currentIndex = index;
-        }),
+        currentIndex: _selectedIndex,
+        onTap: onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.group),

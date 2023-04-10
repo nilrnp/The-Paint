@@ -9,8 +9,10 @@ class Player {
   final double steals;
   final double blocks;
   final double turnovers;
-  final double fgPercentage;
-  final double threePtPercentage;
+  final double twoPointersAttempted;
+  final double threePointersAttempted;
+  final double twoPointersMade;
+  final double threePointersMade;
   final int games;
 
   Player({
@@ -24,8 +26,10 @@ class Player {
     required this.steals,
     required this.blocks,
     required this.turnovers,
-    required this.fgPercentage,
-    required this.threePtPercentage,
     required this.games,
+    required this.twoPointersAttempted,
+    required this.twoPointersMade,
+    required this.threePointersAttempted,
+    required this.threePointersMade,
   });
 }

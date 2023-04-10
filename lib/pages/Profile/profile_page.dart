@@ -3,8 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_paint/components/my_text_field.dart';
 import 'package:image_picker/image_picker.dart';
+import '../Registering/login_page.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -61,17 +64,35 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const LoginPage();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('The Paint'),
+        actions: [
+          IconButton(
+            onPressed: signUserOut,
+            icon: const Icon(Icons.logout),
+          )
+        ],
+        backgroundColor: Colors.black,
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               CircleAvatar(
                 radius: 50,
                 backgroundImage: _image != null ? FileImage(_image!) : null,
@@ -100,12 +121,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const Text(
                 'Email:',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: MyTextField(
@@ -114,20 +135,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   obscureText: false,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: _changeEmail,
-                child: Text('Change Email'),
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white),
+                child: const Text('Change Email'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const Text(
                 'Password:',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: MyTextField(
@@ -136,23 +157,23 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: 'New Password',
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: _changePassword,
-                child: Text('Change Password'),
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white),
+                child: const Text('Change Password'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const Text(
                 'Account Created Date:',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(
                 _user.metadata.creationTime.toString(),
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ],
           ),
