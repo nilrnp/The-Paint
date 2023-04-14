@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:the_paint/components/api_constants.dart';
 import 'package:the_paint/components/player.dart';
-import 'package:the_paint/pages/Teams/player_stats_page.dart';
+import 'package:the_paint/pages/Players/player_stats_page.dart';
 import 'package:the_paint/pages/Teams/teams_page.dart';
 import '../Profile/profile_page.dart';
 import '../Registering/login_page.dart';
@@ -42,6 +42,8 @@ class _PlayersPageState extends State<PlayersPage> {
                 threePointersAttempted: player['ThreePointersAttempted'],
                 threePointersMade: player['ThreePointersMade'],
                 games: player['Games'],
+                freeThrowsAttempted: player['FreeThrowsAttempted'],
+                freeThrowsMade: player['FreeThrowsMade'],
               ))
           .toList();
       return players;
@@ -66,7 +68,10 @@ class _PlayersPageState extends State<PlayersPage> {
         title: const Text('The Paint'),
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            )),
             icon: const Icon(Icons.logout),
           )
         ],

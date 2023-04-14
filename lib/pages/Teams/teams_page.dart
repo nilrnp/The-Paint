@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:the_paint/components/api_constants.dart';
 import 'package:the_paint/components/team.dart';
-import 'package:the_paint/pages/Teams/players_page.dart';
+import 'package:the_paint/pages/Players/players_page.dart';
 import '../Registering/login_page.dart';
 
 class TeamsPage extends StatefulWidget {
@@ -48,7 +48,10 @@ class _TeamsPageState extends State<TeamsPage> {
         title: const Text('The Paint'),
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            )),
             icon: const Icon(Icons.logout),
           )
         ],

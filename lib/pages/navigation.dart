@@ -1,64 +1,73 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:the_paint/pages/Profile/profile_page.dart';
 import 'package:the_paint/pages/Search/search_page.dart';
-import 'Registering/login_page.dart';
+
 import 'Teams/teams_page.dart';
 
-class Navigation extends StatefulWidget {
-  const Navigation({super.key});
-
-  @override
-  _NavigationState createState() => _NavigationState();
-}
-
-class _NavigationState extends State<Navigation> {
-  int _selectedIndex = 0;
-
-  List<Widget> widgetOptions = <Widget>[
-    TeamsPage(),
-    SearchPage(),
-    ProfilePage()
-  ];
-
-  void onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  final screens = [
-    TeamsPage(),
-    SearchPage(),
-    ProfilePage(),
-  ];
+class Navigation extends StatelessWidget {
+  const Navigation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+    CupertinoApp(
+      debugShowCheckedModeBanner: false,
+      home: SearchPage(),
+    );
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
         backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        currentIndex: _selectedIndex,
-        onTap: onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
-            label: 'Teams',
+            label: "Teams",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Search',
+            label: "Search",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: "Profile",
           ),
         ],
       ),
+      tabBuilder: (context, index) {
+        switch (index) {
+          case 0:
+            return CupertinoTabView(
+              builder: (context) {
+                return CupertinoPageScaffold(
+                  child: TeamsPage(),
+                );
+              },
+            );
+          case 1:
+            return CupertinoTabView(
+              builder: (context) {
+                return CupertinoPageScaffold(
+                  child: SearchPage(),
+                );
+              },
+            );
+          case 2:
+            return CupertinoTabView(
+              builder: (context) {
+                return CupertinoPageScaffold(
+                  child: ProfilePage(),
+                );
+              },
+            );
+          default:
+            return CupertinoTabView(
+              builder: (context) {
+                return CupertinoPageScaffold(
+                  child: SearchPage(),
+                );
+              },
+            );
+        }
+      },
     );
   }
 }

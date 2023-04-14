@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../components/api_constants.dart';
 import '../../components/player.dart';
 import '../Registering/login_page.dart';
-import '../Teams/player_stats_page.dart';
+import '../Players/player_stats_page.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -38,6 +38,8 @@ class _SearchPageState extends State<SearchPage> {
                 threePointersAttempted: player['ThreePointersAttempted'],
                 threePointersMade: player['ThreePointersMade'],
                 games: player['Games'],
+                freeThrowsAttempted: player['FreeThrowsAttempted'],
+                freeThrowsMade: player['FreeThrowsMade'],
               ))
           .toList();
       return players;
@@ -74,7 +76,10 @@ class _SearchPageState extends State<SearchPage> {
         title: const Text('The Paint'),
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            )),
             icon: const Icon(Icons.logout),
           )
         ],

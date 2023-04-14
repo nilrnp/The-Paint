@@ -81,7 +81,10 @@ class _ProfilePageState extends State<ProfilePage> {
         title: const Text('The Paint'),
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            )),
             icon: const Icon(Icons.logout),
           )
         ],

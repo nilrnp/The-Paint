@@ -13,6 +13,8 @@ class Player {
   final double threePointersAttempted;
   final double twoPointersMade;
   final double threePointersMade;
+  final double freeThrowsAttempted;
+  final double freeThrowsMade;
   final int games;
 
   Player({
@@ -31,5 +33,7 @@ class Player {
     required this.twoPointersMade,
     required this.threePointersAttempted,
     required this.threePointersMade,
+    required this.freeThrowsAttempted,
+    required this.freeThrowsMade,
   });
 }

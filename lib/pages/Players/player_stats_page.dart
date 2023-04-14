@@ -38,6 +38,8 @@ class _PlayerStatsPageState extends State<PlayerStatsPage> {
                 threePointersAttempted: player['ThreePointersAttempted'],
                 threePointersMade: player['ThreePointersMade'],
                 games: player['Games'],
+                freeThrowsAttempted: player['FreeThrowsAttempted'],
+                freeThrowsMade: player['FreeThrowsMade'],
               ))
           .toList();
       return players;
@@ -68,7 +70,9 @@ class _PlayerStatsPageState extends State<PlayerStatsPage> {
         twoPointersMade: 0,
         threePointersAttempted: 0,
         threePointersMade: 0,
-        games: 0);
+        games: 0,
+        freeThrowsAttempted: 0,
+        freeThrowsMade: 0);
   }
 
   void signUserOut() {
@@ -87,7 +91,10 @@ class _PlayerStatsPageState extends State<PlayerStatsPage> {
         title: const Text('The Paint'),
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => LoginPage(),
+            )),
             icon: const Icon(Icons.logout),
           )
         ],
@@ -223,6 +230,19 @@ class _PlayerStatsPageState extends State<PlayerStatsPage> {
                               DataCell(Text(
                                 (snapshot.data!.threePointersMade /
                                         snapshot.data!.threePointersAttempted *
+                                        100)
+                                    .toStringAsFixed(1),
+                                style: const TextStyle(color: Colors.black),
+                              )),
+                            ]),
+                            DataRow(cells: [
+                              const DataCell(Text(
+                                'Free Throw Percentage',
+                                style: TextStyle(color: Colors.black),
+                              )),
+                              DataCell(Text(
+                                (snapshot.data!.freeThrowsMade /
+                                        snapshot.data!.freeThrowsAttempted *
                                         100)
                                     .toStringAsFixed(1),
                                 style: const TextStyle(color: Colors.black),
