@@ -31,14 +31,6 @@ class _TeamsPageState extends State<TeamsPage> {
     }
   }
 
-  //sign user out method
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return const LoginPage();
-    }));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
