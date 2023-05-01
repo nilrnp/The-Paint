@@ -1,16 +1,13 @@
-# the_paint
+# The Paint
 
-A new Flutter project.
+## About
 
-## Getting Started
+Introducing the ultimate app for basketball enthusiasts - "The Paint". With this app, you can get up-to-date stats for every basketball player in the league, as well as for entire teams.
 
-This project is a starting point for a Flutter application.
+Whether you're interested in finding out how your favorite player is performing this season, or you want to keep an eye on the competition, The Paint has got you covered. You can easily search for individual players by name, or you can view the stats for an entire team all in one place.
 
-A few resources to get you started if this is your first Flutter project:
+The Paint provides detailed stats for each player, including points per game, rebounds, assists, steals, blocks, and more. You can also view player efficiency ratings, shooting percentages, and other advanced metrics to get a deeper understanding of each player's performance.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+In addition to individual player stats, The Paint also provides team stats such as points per game, rebounds, assists, and more. You can easily compare the stats of different teams and see how they stack up against each other.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The Paint is updated in real-time, so you'll always have access to the latest stats and information. You can even set up alerts to be notified when your favorite player or team has a big game.
